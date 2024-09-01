@@ -1,8 +1,3 @@
-#include <iostream>
-
-using std::cout;
-using std::endl;
-
 void externalBorder(int xs, int ys, int xi, int yi){
     int i;
 
@@ -31,6 +26,11 @@ void borderPrinting(void){
     border(2, 1, 97, 3);
 }
 
+void centerText(const char *text, int y){
+    int lenght = strlen(text);
+    gotoxy(50-(lenght/2), y); printf(text);
+}
+
 void staticText(void){
-    gotoxy(46, 2); printf("FINANCE");
+    centerText("J.V. A P A Z A  &  Co", 2);
 }
