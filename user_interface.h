@@ -34,3 +34,32 @@ void centerText(const char *text, int y){
 void staticText(void){
     centerText("J.V. A P A Z A  &  Co", 2);
 }
+
+void loadHomeScreen(void){
+    system("cls");
+    appearance();
+    borderPrinting();
+    staticText();
+    menuDisplay();
+}
+
+void menuDisplay(void){
+    gotoxy(20, 10); printf("%c [1] Compound interest ", 254);
+    gotoxy(20, 13); printf("%c [2] Add capital ", 254);
+    gotoxy(20, 16); printf("%c [3] Substract capital ", 254);
+
+    gotoxy(60, 10); printf("%c [4] Compound interest ", 254);
+    gotoxy(60, 13); printf("%c [5] Add capital ", 254);
+    gotoxy(60, 16); printf("%c [6] Substract capital ", 254);
+}
+
+void selectOption(int input){
+    switch (input){
+    case 1:
+        compountInterest();
+        break;
+    default:
+        loadHomeScreen();
+        break;
+    }
+}

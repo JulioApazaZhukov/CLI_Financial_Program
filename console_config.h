@@ -1,5 +1,3 @@
-#include <Windows.h>
-
 void appearance(void){
     system("color 0A");
     system("mode con: cols=100 lines=30");
