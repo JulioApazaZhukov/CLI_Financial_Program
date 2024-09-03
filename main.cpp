@@ -1,19 +1,19 @@
 #include "prototypes.h"
 #include "console_config.h"
 #include "user_interface.h"
-#include "compound_interest.h"
+#include "financial_calculators.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 
 int main(){
-    int input;
+    int input, confirmation;
     do{
         loadHomeScreen();        
-        centerText("Select option: ", 25); cin >> input;
-        selectOption(input);
-    }while(input == 0);
+        centerText("Select option: ", 22); cin >> input;
+        confirmation = selectOption(input);
+    }while(confirmation == 0);
 
     gotoxy(35, 27); system("pause");
     return 0;

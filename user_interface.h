@@ -1,4 +1,4 @@
-void externalBorder(int xs, int ys, int xi, int yi){
+void border(int xs, int ys, int xi, int yi){
     int i;
 
     for(i = xs; i <= xi; i++){
@@ -17,49 +17,43 @@ void externalBorder(int xs, int ys, int xi, int yi){
     gotoxy(xi, ys); printf("%c",187);
 }
 
-void border(int xs, int ys, int xi, int yi){
-    externalBorder(xs, ys, xi, yi);
-}
-
-void borderPrinting(void){
-    externalBorder(0, 0, 99, 29);
-    border(2, 1, 97, 3);
-}
-
 void centerText(const char *text, int y){
     int lenght = strlen(text);
     gotoxy(50-(lenght/2), y); printf(text);
 }
 
-void staticText(void){
+void fundamentalInterfaceComponents(void){
+    appearance();
+    border(0, 0, 99, 29);
+    border(2, 1, 97, 3);
     centerText("J.V. A P A Z A  &  Co", 2);
 }
 
 void loadHomeScreen(void){
     system("cls");
-    appearance();
-    borderPrinting();
-    staticText();
+    fundamentalInterfaceComponents();
     menuDisplay();
 }
 
 void menuDisplay(void){
-    gotoxy(20, 10); printf("%c [1] Compound interest ", 254);
-    gotoxy(20, 13); printf("%c [2] Add capital ", 254);
-    gotoxy(20, 16); printf("%c [3] Substract capital ", 254);
+    gotoxy(20, 10); printf("%c [1] Dashboard ", 254);
+    gotoxy(20, 13); printf("%c [2] Deposit ", 254);
+    gotoxy(20, 16); printf("%c [3] Withdraw ", 254);
 
-    gotoxy(60, 10); printf("%c [4] Compound interest ", 254);
-    gotoxy(60, 13); printf("%c [5] Add capital ", 254);
-    gotoxy(60, 16); printf("%c [6] Substract capital ", 254);
+    gotoxy(55, 10); printf("%c [4] Lorem ", 254);
+    gotoxy(55, 13); printf("%c [5] Financial calculators ", 254);
+    gotoxy(55, 16); printf("%c [6] Ipsum ", 254);
 }
 
-void selectOption(int input){
+int selectOption(int input){
     switch (input){
-    case 1:
+    case 5:
         compountInterest();
         break;
     default:
         loadHomeScreen();
         break;
     }
+    gotoxy(35, 27); system("pause");
+    return 0;
 }
