@@ -9,6 +9,9 @@ void centerText(const char *, int);
 void fundamentalInterfaceComponents();
 void loadHomeScreen();
 void menuDisplay();
+void calculatorMenuDisplay();
 int selectOption(int);
 
-void compountInterest();
+void launchCalculator(int);
+void compoundInterest();
+void simpleInterest();

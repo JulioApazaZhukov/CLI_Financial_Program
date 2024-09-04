@@ -23,14 +23,14 @@ void centerText(const char *text, int y){
 }
 
 void fundamentalInterfaceComponents(void){
+    system("cls");
     appearance();
     border(0, 0, 99, 29);
     border(2, 1, 97, 3);
-    centerText("J.V. A P A Z A  &  Co", 2);
+    centerText("B A N K", 2);
 }
 
 void loadHomeScreen(void){
-    system("cls");
     fundamentalInterfaceComponents();
     menuDisplay();
 }
@@ -45,10 +45,20 @@ void menuDisplay(void){
     gotoxy(55, 16); printf("%c [6] Ipsum ", 254);
 }
 
+void calculatorMenuDisplay(void){
+    fundamentalInterfaceComponents();
+    int input;
+    gotoxy(40, 10); printf("%c [1] Compound ", 254);
+    gotoxy(40, 13); printf("%c [2] Simple ", 254);
+    gotoxy(40, 16); printf("%c [3] Other ", 254);
+    centerText("Select option: ", 22); scanf("%d", &input);
+    launchCalculator(input);
+}
+
 int selectOption(int input){
     switch (input){
     case 5:
-        compountInterest();
+        calculatorMenuDisplay();
         break;
     default:
         loadHomeScreen();
