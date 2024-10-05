@@ -1,16 +1,14 @@
 #include "prototypes.h"
-#include "console_config.h"
-#include "user_interface.h"
-#include "financial_calculators.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 
-int main(){
+int main (void)
+{
     int input, confirmation;
     do{
-        loadHomeScreen();        
+        menuDisplay();        
         centerText("Select option: ", 22); cin >> input;
         confirmation = selectOption(input);
     }while(confirmation == 0);

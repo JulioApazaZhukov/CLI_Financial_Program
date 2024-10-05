@@ -1,4 +1,5 @@
-void launchCalculator(int input){
+void launchCalculator (int input)
+{
 
     switch (input){
     case 1:
@@ -11,7 +12,8 @@ void launchCalculator(int input){
     }
 }
 
-void compoundInterest(void){
+void compoundInterest (void)
+{
     system("cls");
     fundamentalInterfaceComponents();
 
@@ -38,7 +40,8 @@ void compoundInterest(void){
     gotoxy(30,18); printf("Net interes earning: %.2f", netEarnings);
 }
 
-void simpleInterest(void){
+void simpleInterest (void)
+{
     system("cls");
     fundamentalInterfaceComponents();
 
