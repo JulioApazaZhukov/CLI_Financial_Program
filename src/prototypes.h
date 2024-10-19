@@ -9,7 +9,7 @@ void centerText(const char *, int);
 void fundamentalInterfaceComponents();
 void menuDisplay();
 void calculatorMenuDisplay();
-void dashboard();
+void dashboard(float);
 int selectOption(int);
 
 void launchCalculator(int);

@@ -1,7 +1,7 @@
-void dashboard (void)
+void dashboard (float balance)
 {
     system("cls");
     fundamentalInterfaceComponents();
 
-    gotoxy(30,10); printf("Capital: ");
+    centerText("Account balance: ", 22); printf("%.2f", balance);
 }

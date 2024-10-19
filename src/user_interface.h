@@ -60,7 +60,7 @@ int selectOption (int input)
 {
     switch (input){
         case 1:
-            dashboard();
+            dashboard(220.5);   // test value
             break;
         case 5:
             calculatorMenuDisplay();
