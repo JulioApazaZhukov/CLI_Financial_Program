@@ -1,7 +1,7 @@
-void dashboard (void) // First create DB, then import saved values from user account
+void dashboard (float balance) // First create DB, then import saved values from user account
 {
     system("cls");
     fundamentalInterfaceComponents();
 
-    gotoxy(30,10); printf("Capital: ");
+    centerText("Account balance: ", 15); printf("%.2f", balance);
 }
