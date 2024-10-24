@@ -1,4 +1,4 @@
-void dashboard (void)
+void dashboard (void) // First create DB, then import saved values from user account
 {
     system("cls");
     fundamentalInterfaceComponents();

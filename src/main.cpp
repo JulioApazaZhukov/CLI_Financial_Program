@@ -1,11 +1,9 @@
 #include "prototypes.h"
 
-using std::cin;
-using std::cout;
-using std::endl;
-
 int main (void)
 {
+    loginBox();
+
     int input, confirmation;
     do{
         menuDisplay();        
