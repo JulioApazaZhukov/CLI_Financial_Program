@@ -5,8 +5,8 @@ void loginBox ()
 
     int i;
 
-    int username;
-    int password;
+    string username;
+    string password;
 
     for(i = 0; i <= 99; i++){
         gotoxy(i, 0); printf("%c",205);
@@ -24,6 +24,6 @@ void loginBox ()
     gotoxy(0, 29); printf("%c",200);
     gotoxy(99, 0); printf("%c",187);
 
-    centerText("Username: ", 10); cin >> username;
-    centerText("Password: ", 15); cin >> password;
+    gotoxy(38, 10); cout << "Username: "; cin >> username;
+    gotoxy(38, 15); cout << "Password: "; cin >> password;
 }
