@@ -1,4 +1,4 @@
-#include "prototypes.h"
+#include "declarations.hpp"
 
 int main (void)
 {
