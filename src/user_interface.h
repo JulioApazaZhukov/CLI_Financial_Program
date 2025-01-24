@@ -36,13 +36,12 @@ void fundamentalInterfaceComponents (void)
 void menuDisplay (void)
 {
     fundamentalInterfaceComponents();
-    gotoxy(20, 10); printf("%c [1] Dashboard ", 254);
-    gotoxy(20, 13); printf("%c [2] Deposit ", 254);
-    gotoxy(20, 16); printf("%c [3] Withdraw ", 254);
+    gotoxy(37, 7); printf("Account balance: $"); printf("1000"); //printf("%.2f", balance);
+    gotoxy(20, 11); printf("%c [1] Deposit ", 254);
+    gotoxy(20, 17); printf("%c [2] Withdraw ", 254);
 
-    gotoxy(55, 10); printf("%c [4] Lorem ", 254);
-    gotoxy(55, 13); printf("%c [5] Financial calculators ", 254);
-    gotoxy(55, 16); printf("%c [6] Ipsum ", 254);
+    gotoxy(55, 11); printf("%c [3] Lorem ", 254);
+    gotoxy(55, 17); printf("%c [4] Financial calculators ", 254);
 }
 
 void calculatorMenuDisplay (void)

@@ -3,6 +3,7 @@
 int main (void)
 {
     loginBox();
+    // The function loginBox() will return the balance from the user account
 
     int input, confirmation;
     do{
