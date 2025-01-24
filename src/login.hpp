@@ -1,22 +1,7 @@
-const string customfile = "usuarios.csv";
+const string customfile = "users.csv";
 
-unordered_map<string, string> loadUsers(const string& customfile) {
-    unordered_map<string, string> users;
-    ifstream file(customfile);
-    string linea, user, password;
-
-    while (getline(file, linea)) {
-        stringstream ss(linea);
-        getline(ss, user, ',');
-        getline(ss, password, ',');
-        users[user] = password;
-    }
-
-    file.close();
-    return users;
-}
-
-void registerUser(const string& customfile, const string& user, const string& password) {
+void registerUser(const string& customfile, const string& user, const string& password) 
+{
     ofstream file(customfile, ios::app);
     file << user << "," << password << endl;
     file.close();
@@ -30,66 +15,63 @@ bool authenticateUser(const unordered_map<string, string>& users, const string& 
     return false;
 }
 
-// To do: finnish loginBox function and delete main function of login.hpp
-int main() {
+void loginBox ()
+{
+    system("cls");
+    appearance();
+    border(0, 0, 99, 29);
+
     unordered_map<string, string> users = loadUsers(customfile);
 
     int option;
     string user, password;
 
-    cout << "1. Register\n2. Log in\nElige una opción: ";
-    cin >> option;
-
-    if (option == 1) {
-        cout << "Nombre de usuario: ";
-        cin >> user;
-        cout << "Contraseña: ";
-        cin >> password;
-        registerUser(customfile, user, password);
-        cout << "Usuario registrado exitosamente.\n";
-    } else if (option == 2) {
-        cout << "Nombre de usuario: ";
-        cin >> user;
-        cout << "Contraseña: ";
-        cin >> password;
-        if (authenticateUser(users, user, password)) {
-            cout << "Inicio de sesión exitoso.\n";
-        } else {
-            cout << "Nombre de usuario o contraseña incorrectos.\n";
+    while (true) 
+    {
+        gotoxy(38, 11); cout << "1. Register ";
+        gotoxy(38, 13); cout << "2. Log in ";
+        gotoxy(38, 15); cin >> option;
+        
+        switch (option)
+        {
+        case 1:
+            system("cls");
+            appearance();
+            border(0, 0, 99, 29);
+            gotoxy(38, 11); cout << "Username: "; cin >> user;
+            gotoxy(38, 13); cout << "Password: "; cin >> password;
+            registerUser(customfile, user, password);
+            gotoxy(35, 25); cout << "User registered successfully.\n";
+            gotoxy(35, 27); system("pause");
+            break;
+        case 2:
+            system("cls");
+            appearance();
+            border(0, 0, 99, 29);
+            gotoxy(38, 11); cout << "Username: "; cin >> user;
+            gotoxy(38, 13); cout << "Password: "; cin >> password;
+            if (authenticateUser(users, user, password)) {
+                // Load menu py returning a the balance from the user account
+                int input, confirmation;
+                do{
+                    menuDisplay();        
+                    centerText("Select option: ", 22); cin >> input;
+                    confirmation = selectOption(input);
+                }while(confirmation == 0);
+                // The code from above is for testing purposes
+            } else {
+                gotoxy(35, 25); cout << "Incorrect username or password.\n";
+                gotoxy(35, 27); system("pause");
+            }
+            break;
+        default:
+            cout << "Invalid option.\n";
+            gotoxy(35, 27); system("pause");
+            break;
         }
-    } else {
-        cout << "Opción no válida.\n";
+        system("cls");
+        appearance();
+        border(0, 0, 99, 29);
+        users = loadUsers(customfile);
     }
-
-    return 0;
-}
-
-void loginBox ()
-{
-    system("cls");
-    appearance();
-
-    int i;
-
-    string username;
-    string password;
-
-    for(i = 0; i <= 99; i++){
-        gotoxy(i, 0); printf("%c",205);
-        gotoxy(i, 29
-    ); printf("%c",205);
-    }
-
-    for(i = 0; i <= 29; i++){
-        gotoxy(0, i); printf("%c",186);
-        gotoxy(99, i); printf("%c",186);
-    }
-
-    gotoxy(0, 0); printf("%c",201);
-    gotoxy(99, 29); printf("%c",188);
-    gotoxy(0, 29); printf("%c",200);
-    gotoxy(99, 0); printf("%c",187);
-
-    gotoxy(38, 10); cout << "Username: "; cin >> username;
-    gotoxy(38, 15); cout << "Password: "; cin >> password;
 }

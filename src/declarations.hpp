@@ -10,6 +10,28 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::ofstream;
+using std::unordered_map;
+using std::ios;
+using std::ifstream;
+using std::stringstream;
+
+unordered_map<string, string> loadUsers(const string& customfile) 
+{
+    unordered_map<string, string> users;
+    ifstream file(customfile);
+    string linea, user, password;
+
+    while (getline(file, linea)) {
+        stringstream ss(linea);
+        getline(ss, user, ',');
+        getline(ss, password, ',');
+        users[user] = password;
+    }
+
+    file.close();
+    return users;
+}
 
 void appearance();
 void gotoxy(int, int);
