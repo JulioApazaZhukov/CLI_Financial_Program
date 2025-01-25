@@ -16,20 +16,34 @@ using std::ios;
 using std::ifstream;
 using std::stringstream;
 using std::pair;
+using std::cerr;
+using std::out_of_range;
+using std::invalid_argument;
+using std::getline;
 
-unordered_map<string, pair<string, int>> loadUsers(const string& customfile) 
+unordered_map<string, pair<string, double>> loadUsers(const string& customfile) 
 {
-    unordered_map<string, pair<string, int>> users;
+    unordered_map<string, pair<string, double>> users;
     ifstream file(customfile);
     string line;
     while (getline(file, line)) {
         stringstream ss(line);
         string user, password, balanceStr;
-        getline(ss, user, ',');
-        getline(ss, password, ',');
-        getline(ss, balanceStr, ',');
-        int balance = stoi(balanceStr);
-        users[user] = {password, balance};
+
+        if (getline(ss, user, ',') && getline(ss, password, ',') && getline(ss, balanceStr, ',')) {
+            try {
+                double balance = stod(balanceStr);
+                users[user] = {password, balance};
+            } catch (const invalid_argument&) {
+                cerr << "Invalid balance for user: " << user << ". Skipping entry.\n";
+                continue;
+            } catch (const out_of_range&) {
+                cerr << "Balance out of range for user: " << user << ". Skipping entry.\n";
+                continue;
+            }
+        } else {
+            cerr << "Malformed line in CSV: " << line << ". Skipping entry.\n";
+        }
     }
     file.close();
     return users;
@@ -39,8 +53,8 @@ void appearance();
 void gotoxy(int, int);
 
 void registerUser(const string&, const string&, const string&);
-bool autenticarUsuario(const unordered_map<string, string>&, const string&, const string&);
-int loginBox();
+bool authenticateUser(const unordered_map<string, pair<string, double>>&, const string&, const string&, double&);
+double loginBox();
 
 void border(int, int, int, int);
 void centerText(const char *, int);

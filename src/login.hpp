@@ -7,27 +7,27 @@ void registerUser(const string& customfile, const string& user, const string& pa
     file.close();
 }
 
-bool authenticateUser(const unordered_map<string, pair<string, int>>& users, const string& user, const string& password, int& balance) 
+bool authenticateUser(const unordered_map<string, pair<string, double>>& users, const string& user, const string& password, double& balance) 
 {
     auto it = users.find(user);
     if (it != users.end() && it->second.first == password) { 
-        balance = it->second.second; 
+        balance = it->second.second; // Retrieve balance as double
         return true;
     }
     return false;
 }
 
-int loginBox() 
+double loginBox() 
 {
     system("cls");
     appearance();
     border(0, 0, 99, 29);
 
-    unordered_map<string, pair<string, int>> users = loadUsers(customfile);
+    unordered_map<string, pair<string, double>> users = loadUsers(customfile);
 
     int option;
     string user, password;
-    int balance = 0;
+    double balance = 0.0;
 
     while (true) 
     {
@@ -54,7 +54,7 @@ int loginBox()
             gotoxy(38, 11); cout << "Username: "; cin >> user;
             gotoxy(38, 13); cout << "Password: "; cin >> password;
             if (authenticateUser(users, user, password, balance)) {
-                return balance;
+                return balance; // Return the balance as double
             } else {
                 gotoxy(35, 25); cout << "Incorrect username or password.\n";
                 gotoxy(35, 27); system("pause");
