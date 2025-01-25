@@ -33,10 +33,10 @@ void fundamentalInterfaceComponents (void)
     centerText("B A N K", 2);
 }
 
-void menuDisplay (void)
+void menuDisplay (double balance)
 {
     fundamentalInterfaceComponents();
-    gotoxy(37, 7); printf("Account balance: $"); printf("1000"); //printf("%.2f", balance);
+    gotoxy(37, 7); printf("Account balance: $"); printf("%.2f", balance);
     gotoxy(20, 11); printf("%c [1] Deposit ", 254);
     gotoxy(20, 17); printf("%c [2] Withdraw ", 254);
 
@@ -55,17 +55,17 @@ void calculatorMenuDisplay (void)
     launchCalculator(input);
 }
 
-int selectOption (int input)
+int selectOption (int input, double balance)
 {
     switch (input){
         case 1:
-            dashboard(220.5);   // test value
+            dashboard(balance);   // test value
             break;
         case 5:
             calculatorMenuDisplay();
             break;
         default:
-            menuDisplay();
+            menuDisplay(balance);
             break;
     }
     gotoxy(35, 27); system("pause");

@@ -1,6 +1,5 @@
 void launchCalculator (int input)
 {
-
     switch (input){
     case 1:
         compoundInterest();

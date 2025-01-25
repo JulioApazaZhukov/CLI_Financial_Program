@@ -3,28 +3,31 @@ const string customfile = "users.csv";
 void registerUser(const string& customfile, const string& user, const string& password) 
 {
     ofstream file(customfile, ios::app);
-    file << user << "," << password << endl;
+    file << user << "," << password << ",0" << endl;
     file.close();
 }
 
-bool authenticateUser(const unordered_map<string, string>& users, const string& user, const string& password) {
+bool authenticateUser(const unordered_map<string, pair<string, int>>& users, const string& user, const string& password, int& balance) 
+{
     auto it = users.find(user);
-    if (it != users.end() && it->second == password) {
+    if (it != users.end() && it->second.first == password) { 
+        balance = it->second.second; 
         return true;
     }
     return false;
 }
 
-void loginBox ()
+int loginBox() 
 {
     system("cls");
     appearance();
     border(0, 0, 99, 29);
 
-    unordered_map<string, string> users = loadUsers(customfile);
+    unordered_map<string, pair<string, int>> users = loadUsers(customfile);
 
     int option;
     string user, password;
+    int balance = 0;
 
     while (true) 
     {
@@ -50,15 +53,8 @@ void loginBox ()
             border(0, 0, 99, 29);
             gotoxy(38, 11); cout << "Username: "; cin >> user;
             gotoxy(38, 13); cout << "Password: "; cin >> password;
-            if (authenticateUser(users, user, password)) {
-                // Load menu py returning a the balance from the user account
-                int input, confirmation;
-                do{
-                    menuDisplay();        
-                    centerText("Select option: ", 22); cin >> input;
-                    confirmation = selectOption(input);
-                }while(confirmation == 0);
-                // The code from above is for testing purposes
+            if (authenticateUser(users, user, password, balance)) {
+                return balance;
             } else {
                 gotoxy(35, 25); cout << "Incorrect username or password.\n";
                 gotoxy(35, 27); system("pause");

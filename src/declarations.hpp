@@ -15,20 +15,22 @@ using std::unordered_map;
 using std::ios;
 using std::ifstream;
 using std::stringstream;
+using std::pair;
 
-unordered_map<string, string> loadUsers(const string& customfile) 
+unordered_map<string, pair<string, int>> loadUsers(const string& customfile) 
 {
-    unordered_map<string, string> users;
+    unordered_map<string, pair<string, int>> users;
     ifstream file(customfile);
-    string linea, user, password;
-
-    while (getline(file, linea)) {
-        stringstream ss(linea);
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string user, password, balanceStr;
         getline(ss, user, ',');
         getline(ss, password, ',');
-        users[user] = password;
+        getline(ss, balanceStr, ',');
+        int balance = stoi(balanceStr);
+        users[user] = {password, balance};
     }
-
     file.close();
     return users;
 }
@@ -38,15 +40,15 @@ void gotoxy(int, int);
 
 void registerUser(const string&, const string&, const string&);
 bool autenticarUsuario(const unordered_map<string, string>&, const string&, const string&);
-void loginBox();
+int loginBox();
 
 void border(int, int, int, int);
 void centerText(const char *, int);
 void fundamentalInterfaceComponents();
-void menuDisplay();
+void menuDisplay(double);
 void calculatorMenuDisplay();
-void dashboard(float);
-int selectOption(int);
+void dashboard(double);
+int selectOption(int, double);
 
 void launchCalculator(int);
 void compoundInterest();

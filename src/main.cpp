@@ -2,14 +2,14 @@
 
 int main (void)
 {
-    loginBox();
-    // The function loginBox() will return the balance from the user account
+    double balance = loginBox();
+    // The function loginBox() return the balance from the user account
 
     int input, confirmation;
     do{
-        menuDisplay();        
+        menuDisplay(balance);        
         centerText("Select option: ", 22); cin >> input;
-        confirmation = selectOption(input);
+        confirmation = selectOption(input, balance);
     }while(confirmation == 0);
 
     gotoxy(35, 27); system("pause");

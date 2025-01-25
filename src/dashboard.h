@@ -1,4 +1,4 @@
-void dashboard (float balance) // First create DB, then import saved values from user account
+void dashboard (double balance) // First create DB, then import saved values from user account
 {
     system("cls");
     fundamentalInterfaceComponents();
