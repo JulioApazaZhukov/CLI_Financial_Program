@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <unordered_map>
+#include <limits>
 
 using std::cin;
 using std::cout;
@@ -20,6 +21,8 @@ using std::cerr;
 using std::out_of_range;
 using std::invalid_argument;
 using std::getline;
+
+#define INT_MAX 2147483647
 
 unordered_map<string, pair<string, double>> loadUsers(const string& customfile) 
 {
@@ -54,7 +57,7 @@ void gotoxy(int, int);
 
 void registerUser(const string&, const string&, const string&);
 bool authenticateUser(const unordered_map<string, pair<string, double>>&, const string&, const string&, double&);
-double loginBox();
+double loginBox(const string&);
 
 void border(int, int, int, int);
 void centerText(const char *, int);
@@ -62,7 +65,11 @@ void fundamentalInterfaceComponents();
 void menuDisplay(double);
 void calculatorMenuDisplay();
 void dashboard(double);
-int selectOption(int, double);
+int selectOption(int, unordered_map<string, pair<string, double>>&, const string&, double&);
+
+void updateCSV(const string&, const unordered_map<string, pair<string, double>>&);
+void deposit(unordered_map<string, pair<string, double>>&, const string&, double);
+bool withdraw(unordered_map<string, pair<string, double>>&, const string&, double);
 
 void launchCalculator(int);
 void compoundInterest();
@@ -72,4 +79,3 @@ void simpleInterest();
 #include "login.hpp"
 #include "user_interface.h"
 #include "financial_calculators.h"
-#include "dashboard.h"

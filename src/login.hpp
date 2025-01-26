@@ -11,13 +11,13 @@ bool authenticateUser(const unordered_map<string, pair<string, double>>& users, 
 {
     auto it = users.find(user);
     if (it != users.end() && it->second.first == password) { 
-        balance = it->second.second; // Retrieve balance as double
+        balance = it->second.second;
         return true;
     }
     return false;
 }
 
-double loginBox() 
+double loginBox(string& user) 
 {
     system("cls");
     appearance();
@@ -26,7 +26,7 @@ double loginBox()
     unordered_map<string, pair<string, double>> users = loadUsers(customfile);
 
     int option;
-    string user, password;
+    string password;
     double balance = 0.0;
 
     while (true) 
@@ -54,7 +54,7 @@ double loginBox()
             gotoxy(38, 11); cout << "Username: "; cin >> user;
             gotoxy(38, 13); cout << "Password: "; cin >> password;
             if (authenticateUser(users, user, password, balance)) {
-                return balance; // Return the balance as double
+                return balance;
             } else {
                 gotoxy(35, 25); cout << "Incorrect username or password.\n";
                 gotoxy(35, 27); system("pause");
