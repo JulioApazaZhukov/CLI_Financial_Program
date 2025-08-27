@@ -93,7 +93,8 @@ bool withdraw(unordered_map<string, pair<string, double>>& users, const string& 
         return false;
     }
 
-    users[username].second -= amount; // Update balance
+    users[username].second -= amount;
+    updateCSV(customfile, users);
     gotoxy(35, 25); cout << "Withdrew " << amount << " from " << username << "'s account.\n";
     return true;
 }
