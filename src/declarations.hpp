@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <unordered_map>
+#include <climits>
 #include <limits>
 
 using std::cin;
@@ -21,8 +22,6 @@ using std::cerr;
 using std::out_of_range;
 using std::invalid_argument;
 using std::getline;
-
-#define INT_MAX 2147483647
 
 unordered_map<string, pair<string, double>> loadUsers(const string& customfile) 
 {

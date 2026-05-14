@@ -42,7 +42,7 @@ void menuDisplay (double balance)
     gotoxy(20, 14); printf("%c [2] Deposit ", 254);
     gotoxy(20, 17); printf("%c [3] Withdraw ", 254);
 
-    gotoxy(55, 11); printf("%c [4] Lorem ", 254);
+    gotoxy(55, 11); printf("%c [4] History ", 254);
     gotoxy(55, 14); printf("%c [5] Financial calculators ", 254);
     gotoxy(55, 17); printf("%c [6] Log Out ", 254);
 }
