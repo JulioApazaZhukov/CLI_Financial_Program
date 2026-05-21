@@ -54,8 +54,17 @@ void calculatorMenuDisplay (void)
     gotoxy(40, 10); printf("%c [1] Compound ", 254);
     gotoxy(40, 13); printf("%c [2] Simple ", 254);
     gotoxy(40, 16); printf("%c [3] Other ", 254);
-    centerText("Select option: ", 22); scanf("%d", &input);
+    centerText("Select option: ", 22); scanf("%i", &input);
     launchCalculator(input);
+}
+
+void historyDisplay (void)
+{
+    int input;
+    fundamentalInterfaceComponents();
+    centerText("H I S T O R Y", 4);
+    centerText("Exit", 10); scanf("%i", &input);
+
 }
 
 void dashboard (double balance)
@@ -140,6 +149,9 @@ int selectOption (int input, unordered_map<string, pair<string, double>>& users,
             if (withdraw(users, user, withdrawAmount)) {
                 balance = users[user].second;
             }
+            break;
+        case 4:
+            historyDisplay();
             break;
         case 5:
             calculatorMenuDisplay();
